@@ -18,9 +18,12 @@ jobs:
         VNC_USER: ${{ secrets.VNC_USER }}
       run: |
         echo "TAILSCALE_TOKEN=${{ env.TAILSCALE_TOKEN }}" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
+        echo "VNC_USER=${{ env.VNC_USER }}" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
+        echo "VNC_USER_PASSWORD=${{ env.VNC_USER_PASSWORD }}" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
+        echo "VNC_PASSWORD=${{ env.VNC_PASSWORD }}" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append        
     - name: Setting the environment up.
       working-directory: ./github-runner-windows-gui
-      run: ./init.ps1 ${{ env.TAILSCALE_TOKEN }}
+      run: ./init.ps1 ${{ env.TAILSCALE_TOKEN }} ${{ env.VNC_USER }} ${{ env.VNC_USER_PASSWORD }}
 
     #keep session running
     - name: Setup tmate session
