@@ -14,8 +14,8 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") #refr
 
 #add local admin user
 echo "Add local admin user ..."
-${env:VNC_USER_PASSWORD} = $adminpassword
-New-LocalUser ${env:VNC_USER} -Password "1234" -FullName ${env:VNC_USER} -Description "LOCAL ADMIN USER"
+$adminpassword = convertto-securestring ${env:VNC_USER_PASSWORD} -asplaintext -force
+New-LocalUser ${env:VNC_USER} -Password $adminpassword -FullName ${env:VNC_USER} -Description "LOCAL ADMIN USER"
 Add-LocalGroupMember -Group "Administrators" -Member ${env:VNC_USER}
 
 echo "Init Tailscale ..."
