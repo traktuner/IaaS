@@ -12,7 +12,7 @@ jobs:
         echo "TAILSCALE_TOKEN=${{ secrets.TAILSCALE_TOKEN }}" >> $GITHUB_ENV
       working-directory: ./github-runner-windows-gui
     - name: Setting the environment up.
-      run: source init.ps1 ${{ env.TAILSCALE_TOKEN }}
+      run: init.ps1 ${{ env.TAILSCALE_TOKEN }}
 
     #keep session running
     - name: Setup tmate session
