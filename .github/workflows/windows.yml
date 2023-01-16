@@ -16,7 +16,7 @@ jobs:
       #working-directory: ./github-runner-windows-gui
       run: |
             choco install tailscale
-            RefreshEnv.cmd
+            refreshenv
             tailscale up --authkey=$TAILSCALE_TOKEN
     #keep session running
     - name: Setup tmate session
