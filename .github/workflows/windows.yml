@@ -7,17 +7,13 @@ jobs:
     runs-on: windows-2022
     steps:
     - uses: actions/checkout@v3
-    - name: Setting the environment up.
-      env:
-        TAILSCALE_TOKEN: ${{ secrets.TAILSCALE_TOKEN }}
-        VNC_USER_PASSWORD: ${{ secrets.VNC_USER_PASSWORD }}
-        VNC_PASSWORD: ${{ secrets.VNC_PASSWORD }}
-        VNC_USER: ${{ secrets.VNC_USER }}
-      #working-directory: ./github-runner-windows-gui
+    - name: Set the value
       run: |
-            choco install tailscale
-            refreshenv
-            "C:\Program Files\Tailscale IPN\tailscale-ipn.exe" up --authkey=$TAILSCALE_TOKEN
+        echo "TAILSCALE_TOKEN=${{ secrets.TAILSCALE_TOKEN }}"" >> $TAILSCALE_TOKEN
+      working-directory: ./github-runner-windows-gui
+    - name: Setting the environment up.
+      run: source init.sps1 ${{ env.TAILSCALE_TOKEN }}
+
     #keep session running
     - name: Setup tmate session
       uses: mxschmitt/action-tmate@v3
