@@ -13,8 +13,8 @@ jobs:
     - name: Set the value
       run: |
         echo "TAILSCALE_TOKEN=${{ secrets.TAILSCALE_TOKEN }}" >> $GITHUB_ENV
-      working-directory: ./github-runner-windows-gui
     - name: Setting the environment up.
+      working-directory: ./github-runner-windows-gui
       run: ./init.ps1 ${{ env.TAILSCALE_TOKEN }}
 
     #keep session running
