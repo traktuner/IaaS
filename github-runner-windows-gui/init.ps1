@@ -14,7 +14,8 @@ refreshenv
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") #refresh PATH variables
 
 #add local admin user
-New-LocalUser ${env:VNC_USER} -Password ${env:VNC_USER_PASSWORD} -FullName ${env:VNC_USER} -Description "LOCAL USER"
+${env:VNC_USER_PASSWORD} = $adminpassword
+New-LocalUser ${env:VNC_USER} -Password $adminpassword -FullName ${env:VNC_USER} -Description "LOCAL ADMIN USER"
 Add-LocalGroupMember -Group "Administrators" -Member ${env:VNC_USER}
 
 echo "Init Tailscale ..."
