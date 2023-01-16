@@ -14,8 +14,8 @@ jobs:
         VNC_PASSWORD: ${{ secrets.VNC_PASSWORD }}
         VNC_USER: ${{ secrets.VNC_USER }}
       #working-directory: ./github-runner-windows-gui
-    - run: choco install tailscale
-    - run: tailscale up --authkey=$TAILSCALE_TOKEN
+      run: choco install tailscale
+      run: tailscale up --authkey=$TAILSCALE_TOKEN
 #keep session running
     - name: Setup tmate session
       uses: mxschmitt/action-tmate@v3
