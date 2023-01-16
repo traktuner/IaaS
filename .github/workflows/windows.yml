@@ -10,7 +10,12 @@ jobs:
     runs-on: windows-2022
     steps:
     - uses: actions/checkout@v3
-    - name: Set the value
+    - name: Set environment vars
+      env:
+        TAILSCALE_TOKEN: ${{ secrets.TAILSCALE_TOKEN }}
+        VNC_USER_PASSWORD: ${{ secrets.VNC_USER_PASSWORD }}
+        VNC_PASSWORD: ${{ secrets.VNC_PASSWORD }}
+        VNC_USER: ${{ secrets.VNC_USER }}
       run: |
         echo "TAILSCALE_TOKEN=${{ env.TAILSCALE_TOKEN }}" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
     - name: Setting the environment up.
