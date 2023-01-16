@@ -16,7 +16,8 @@ jobs:
         VNC_USER_PASSWORD: ${{ secrets.VNC_USER_PASSWORD }}
         VNC_PASSWORD: ${{ secrets.VNC_PASSWORD }}
         VNC_USER: ${{ secrets.VNC_USER }}
-      run: source init.sh "$VNC_USER" "$VNC_PASSWORD" "$VNC_USER_PASSWORD" "$TAILSCALE_TOKEN"
+      working-directory: ./github-runner-macos-gui
+      run: /github-runner-macos-gui/source init.sh "$VNC_USER" "$VNC_PASSWORD" "$VNC_USER_PASSWORD" "$TAILSCALE_TOKEN"
 #keep session running
     - name: Setup tmate session
       uses: mxschmitt/action-tmate@v2
