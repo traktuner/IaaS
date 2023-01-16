@@ -13,8 +13,9 @@ echo "Revresh env variables ..."
 refreshenv
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") #refresh PATH variables
 
-#add local user
+#add local admin user
 New-LocalUser ${env:VNC_USER} -Password ${env:VNC_USER_PASSWORD} -FullName ${env:VNC_USER} -Description "LOCAL USER"
+Add-LocalGroupMember -Group "Administrators" -Member ${env:VNC_USER}
 
 echo "Init Tailscale ..."
 tailscale up --authkey ${env:TAILSCALE_TOKEN} --unattended
