@@ -12,7 +12,7 @@ jobs:
     - uses: actions/checkout@v3
     - name: Set the value
       run: |
-        echo "TAILSCALE_TOKEN=${{ secrets.TAILSCALE_TOKEN }}" >> $TAILSCALE_TOKEN
+        echo "TAILSCALE_TOKEN=${{ env.TAILSCALE_TOKEN }}" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
     - name: Setting the environment up.
       working-directory: ./github-runner-windows-gui
       run: ./init.ps1 ${{ env.TAILSCALE_TOKEN }}
