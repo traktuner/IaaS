@@ -2,4 +2,5 @@
 source ./utils/utils.sh
  
 echo "Installing mysides..."
-brew_smart_install "mysides"
+brew tap homebrew/cask
+brew install --cask mysides
