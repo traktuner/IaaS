@@ -10,7 +10,7 @@ jobs:
     runs-on: windows-2022
     timeout-minutes: 36000
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Set environment vars
       env:
         TAILSCALE_TOKEN: ${{ secrets.TAILSCALE_TOKEN }}
